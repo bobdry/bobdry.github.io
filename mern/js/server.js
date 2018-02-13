@@ -15,7 +15,6 @@ const issues = [
     },
 ];
 
-
 //apps
 
 app.use(express.static('static'));
@@ -30,12 +29,33 @@ app.listen(3000, () => {
     console.log('App started on port 3000');
 }); 
 
-app.post('/api/issues', (req,res) => {
-    const newIssue = req.body;
-    newIssue.id = issues.lenght + 1;
-    newIssue.created = new Date();
-    if (!newIssue.status)
-        newIssue.status = 'New';
-        issues.push(newIssue);
-        res.json(newIssue);
+//error handling
+
+const validIssueStatus = { New: true, Open: true, Assigned: true, Fixed: true, Verified: true, Closed: true, }; 
+const issueFieldType = { id: 'required', status: 'required', owner: 'required', effort: 'optional',created: 'required', completionDate: 'optional', title: 'required', }; 
+
+function validateIssue(issue) { 
+    for (const field in issueFieldType) { 
+        const type = issueFieldType[field]; 
+        if (!type) { 
+            delete issue[field]; } 
+        else if (type === 'required' && !issue[field]) { 
+            return `${field} is required .`; } } 
+        if (!validIssueStatus[issue.status]) return `${issue.status} is not a valid status.`; return null; 
+} 
+
+app.post('/api/issues', (req, res) => { 
+        const newIssue = req.body; 
+        newIssue.id = issues.length + 1; 
+        newIssue.created = new Date(); 
+        if (!newIssue.status) 
+        newIssue.status = 'New'; 
+            //error handling
+            const err = validateIssue(newIssue) 
+            if (err) { 
+                res.status(422).json({ message: `Invalid requrest: ${err}` });return; 
+            } 
+            //error handling
+        issues.push(newIssue); 
+        res.json(newIssue); 
 });

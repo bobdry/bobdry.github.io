@@ -31,16 +31,8 @@ class BorderWrap extends React.Component {
     }
 }
 
-//JS Array of issues
-
-const issues = [
-    {
-        id: 1, status: 'Open', owner: 'Ravan', created: new Date('2016-08-15'), effort: 5, completionDate: undefined, title: 'Error in console when clicking Add',
-    },
-    {
-        id: 2, status: 'Assigned', owner: 'Eddie', created: new Date('2016-08-16'), effort: 14, completionDate: new Date('2016-08-30'), title: 'Missing bottom border on panel',
-    }
-];
+//JS Array of issues moved to Server.js API
+//const issues = [];
 
 ///////////////////////////////////////////////////////////////// ISSUE ROW FUNCTION (STATELESS COMPONENT)
 const IssueRow = (props) => (
@@ -141,11 +133,26 @@ class IssueList extends React.Component {
         });
     }
     
-    createIssue(newIssue) {
-        const newIssues = this.state.issues.slice();
-        newIssue.id = this.state.issues.length + 1;
-        newIssues.push(newIssue);
-        this.setState({ issues: newIssues });
+    // create new issue, add them to create new array with .concat in server.js -- also with error handling
+    createIssue(newIssue) { 
+        fetch('/api/issues', { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify(newIssue ), }).then(response => { 
+            if (response.ok) { response.json().then(updatedIssue => { 
+                updatedIssue.created = new Date(updatedIssue.created);        
+            if (updatedIssue.completionDate) 
+                updatedIssue.completionDate = new Date(updatedIssue.completionDate); 
+            const newIssues = this.state.issues.concat(updatedIssue); 
+            this.setState({ issues: newIssues }); 
+            }); 
+            } 
+            else { 
+            response.json().then(error => { 
+                alert("Failed to add issue: " + error.message) }); } 
+            }).catch(err => { 
+            alert("Error in sending data to server: " + err.message); 
+            }); 
     }
     
     render() {
