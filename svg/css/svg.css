@@ -1,0 +1,14 @@
+.knockout {
+    /* Ensure the bottom layer is full screen */
+    height: 10em;
+    width: 10em;
+    border-radius: 5em;
+    /* Add a colorful texture and cutom font-styling */
+    background-image: linear-gradient(to top, #ff4e50 , #f9d423);
+}
+
+svg.knockout-text-container {
+    height: 10em;
+    width: 10em;
+    border-radius: 5em;   
+}

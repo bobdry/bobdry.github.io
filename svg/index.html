@@ -1,0 +1,40 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<meta charset="UTF-8" />
+<title>SVG</title>
+<link rel="stylesheet" type="text/css" href="css/svg.css">
+</head>
+<body>
+    
+<div class="knockout">
+  
+  <svg class="knockout-text-container" width="100%" height="100%">
+    
+    <rect class="knockout-text-bg" width="100%" height="100%" fill="#000" x="0" y="0" fill-opacity="1" mask="url(#knockout-text)" />
+    
+    <mask id="knockout-text">
+      <rect width="100%" height="100%" fill="#fff" x="0" y="0" />
+      <ellipse cx="5em" cy="5em" rx="0.8em" ry="0.8em"/>
+        
+        <!--top left-->      
+        <g opacity="1" transform="scale(1) translate(0,0)">
+        <path d="M-40,-100 L80,80 L-100,60 Z"/>  
+        </g>
+        <!--top right-->
+        <g opacity="1" transform="scale(1) translate(0,0)">
+        <path d="M200,-100 L80,80 L260,60 Z"/>  
+        </g>
+        <!--bottom-->
+        <g opacity="1" transform="scale(1) translate(0,0)">
+        <path d="M0,260 L80,80 L160,260 Z"/>  
+        </g>
+        
+    </mask>
+    
+  </svg>
+  
+</div>
+    
+</body>
+</html>
