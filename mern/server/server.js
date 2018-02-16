@@ -23,8 +23,9 @@ app.listen(3000, () => {
     console.log('App started on port 3000');
 }); 
 
-//connect to mongo db
+//connect to mongo db constants
 const MongoClient = require('mongodb').MongoClient;
+const Issue = require('./issue.js');
 
 let db;
 MongoClient.connect('mongodb://localhost/issuetracker').then(connection => {
@@ -57,7 +58,7 @@ app.post('/api/issues', (req, res) => {
         if (!newIssue.status) 
         newIssue.status = 'New'; 
             //error handling
-            const err = validateIssue(newIssue) 
+            const err = Issue.validateIssue(newIssue) 
             if (err) { 
                 res.status(422).json({ message: `Invalid requrest: ${err}` });return; 
             } 
