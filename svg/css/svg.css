@@ -4,7 +4,7 @@
     width: 10em;
     border-radius: 5em;
     /* Add a colorful texture and cutom font-styling */
-    background-image: linear-gradient(to top, #fff , #eee);
+    background-image: linear-gradient(to top, #fff , #ea7123);
 }
 
 svg.knockout-text-container {
