@@ -1,3 +1,7 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//vanilla js funcs n vars from Chris Coyier
+
+//check window width on page load and resize and do a func
 var venTana = function (){
        if (window.innerWidth)
        {
@@ -30,8 +34,36 @@ window.onresize=function()
     tellMeTheSizes();
     console.log(venTana());
 }
+//check window width on page load and resize and do a func
 
-//vanilla js facts
+
+
+//shuffle an array
+function Shuffle(o) {
+	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
+};
+
+var testArray = [1,2,3,4,5];
+var thisShuffleAll = document.getElementById("dumpAll");
+var thisShuffleOne = document.getElementById("dumpOne");
+
+Shuffle(testArray);
+
+// js to dump out new values to element with ID of 'dumpAll' and 'dumpOne'
+var shuffler = function() {  
+   for (var i=0;i<testArray.length;i++) {
+      thisShuffleAll.innerHTML = testArray;
+      thisShuffleOne.innerHTML = testArray[i];
+   }
+};
+shuffler();
+// or this works too?: yourArray.sort(function() { return 0.5 - Math.random() });
+//shuffle an array
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//vanilla js funcs n vars from Douglas Crockford's JS the good parts
 
 //example of vars
     var globvar = 0;
