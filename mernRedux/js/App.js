@@ -2,19 +2,6 @@
 //destination
 const contentNode = document.getElementById('contents');
 
-
-
-
-// filter
-class IssueFilter extends React.Component {
-    render () {
-        return (
-        <div>This is the placeholder for the IssueFilter</div>
-        )
-    }
-}
-
-
 // table of issues
 
 
@@ -35,23 +22,19 @@ class BorderWrap extends React.Component {
 
 const issues = [
     {
-        id: 1, status: 'Open', owner: 'Ravan', created: new Date('2016-08-15'), effort: 5, completionDate: undefined, title: 'Error in console when clicking Add',
+        id: 1, firstName: 'Joe', lastName: 'Bounds', cellNum: '919.621.8941', eMailAt: 'bob@bob.com', quantityCopies: '5', created: new Date('2016-08-15')
     },
-    {
-        id: 2, status: 'Assigned', owner: 'Eddie', created: new Date('2016-08-16'), effort: 14, completionDate: new Date('2016-08-30'), title: 'Missing bottom border on panel',
-    }
 ];
-
 ///////////////////////////////////////////////////////////////// ISSUE ROW FUNCTION (STATELESS COMPONENT)
 const IssueRow = (props) => (
         <tr>
             <td>{props.issue.id}</td>
-            <td>{props.issue.status}</td>
-            <td>{props.issue.owner}</td>
+            <td>{props.issue.firstName}</td>
+            <td>{props.issue.lastName}</td>
+            <td>{props.issue.cellNum}</td>
+            <td>{props.issue.eMailAt}</td>
+            <td>{props.issue.quantityCopies}</td>
             <td>{props.issue.created.toDateString()}</td>
-            <td>{props.issue.effort}</td>
-            <td>{props.issue.completionDate ? props.issue.completionDate.toDateString() : ''}</td>
-            <td>{props.issue.title}</td>
         </tr>
         )
 
@@ -63,12 +46,12 @@ function IssueTable(props) {
             <thead>
             <tr>
             <th>ID</th>
-            <th>Status</th>
-            <th>Owner</th>
-            <th>Created</th>
-            <th>Effort</th>
-            <th>Completion Date</th>
-            <th>Title</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Cell</th>
+            <th>Email</th>
+            <th>Quantity</th>
+            <th>Date</th>
             </tr>
             </thead>
             <tbody>
@@ -77,8 +60,6 @@ function IssueTable(props) {
             </table>
             );
     }
-
-
 ///////////////////////////////////////////////////////////////// ADD AN ISSUE CLASS OBJECT
 class IssueAdd extends React.Component {
     constructor() {
@@ -89,21 +70,26 @@ class IssueAdd extends React.Component {
         e.preventDefault();
         var form = document.forms.issueAdd;
         this.props.createIssue({
-            owner: form.owner.value,
-            title: form.title.value,
-            status: "New",
+            firstName: form.firstName.value,
+            lastName: form.lastName.value,
+            cellNum: form.cellNum.value,
+            eMailAt: form.eMailAt.value,
+            quantityCopies: form.quantityCopies.value,
             created: new Date(),
         });
-        //clear the fprm for the next input
-        form.owner.value = ""; form.title.value = "";
+        //clear the form for the next input
+        form.firstName.value = ""; form.lastName.value = ""; form.cellNum.value = ""; form.eMailAt.value = ""; form.quantityCopies.value = "";
     }
     render() {
         return (
             <div>
             <form name="issueAdd" onSubmit={this.handleSubmit}>
-            <input type="text" name="owner" placeholder="Owner" />
-            <input type="text" name="title" placeholder="Title" />
-            <button>Add</button>
+            <input type="text" name="firstName" placeholder="First Name" />
+            <input type="text" name="lastName" placeholder="Last Name" /><br/>
+            <input type="text" name="cellNum" placeholder="Cell" />
+            <input type="text" name="eMailAt" placeholder="Email" /><br/>
+            <input type="text" name="quantityCopies" placeholder="Quantity" /><br/>
+            <button>Submit</button>
             </form>
             </div>
         )
@@ -140,7 +126,6 @@ class IssueList extends React.Component {
         return (
         <div>
         <h1>Issue Tracker</h1>
-            <IssueFilter />
             <hr />
             <IssueTable issues={this.state.issues}/>
             <hr />
