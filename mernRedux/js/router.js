@@ -1,29 +1,85 @@
-//Router js
-
-import { BrowserRouter, Route } from 'react-router-dom'
-
+// App.js
 //destination
 const contentNode = document.getElementById('contents');
 
-const PrimaryLayout = () => (
-  <div className="primary-layout">
-    <header>
-      Our React Router 4 App
-    </header>
-    <main>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/users" component={UsersPage} />
-    </main>
-  </div>
-)
+var Router = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var IndexRoute = ReactRouter.IndexRoute;
+var Link = ReactRouter.Link;
+var browserHistory = ReactRouter.browserHistory;
 
-const HomePage =() => <div>Home Page</div>
-const UsersPage = () => <div>Users Page</div>
+class RouteA extends React.Component {
+  btnClickB() {
+    browserHistory.push('/b');
+  }
+  btnClickC() {
+    browserHistory.push('/c');
+  }
 
-const App = () => (
-  <BrowserRouter>
-    <PrimaryLayout />
-  </BrowserRouter>
-)
+  render() {
+    return(
+      <div>
+        <h2>Route A</h2>
+        <div>
+          <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+          <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+        </div>
+      </div>
+    );
+  }
+}
 
-ReactDOM.render(<App />, contentNode);
+class RouteB extends React.Component {
+  btnClickA() {
+    browserHistory.push('/a');
+  }
+
+  btnClickC() {
+    browserHistory.push('/c');
+  }
+
+  render() {
+    return(
+      <div>
+        <h2>Route B</h2>
+        <div>
+          <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+          <button className="btn btn-default" onClick={ this.btnClickC }>Goto C</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+class RouteC extends React.Component {
+  btnClickA() {
+    browserHistory.push('/a');
+  }
+
+  btnClickB() {
+    browserHistory.push('/b');
+  }
+
+  render() {
+    return(
+      <div>
+        <h2>Route C</h2>
+        <div>
+          <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
+          <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Router history={browserHistory}>
+    <Route path="/" component={RouteA} />
+    <Route path="/a" component={RouteA} />
+    <Route path="/b" component={RouteB} />
+    <Route path="/c" component={RouteC} />
+    <Route path="*" component={RouteA} />
+  </Router>,
+  contentNode
+);
