@@ -30,137 +30,105 @@ class RouteA extends React.Component {
 
 
 
-
 //////////////////////////////////////////////////////////////////////////state two
 //app components
-//BorderWrap component for row style
-class BorderWrap extends React.Component {
-    render() {
-        const borderStyle = {border: "1px solid silver, padding 6;"};
-            return (
-                <div style={borderedStyle}>
-                    {this.props.children}
-                </div>
-            );
-    }
-}
-//JS Array of issues
-const issues = [
-    {
-        id: 1, firstName: 'Joe', lastName: 'Bounds', cellNum: '919.621.8941', eMailAt: 'bob@bob.com', quantityCopies: '5', created: new Date('2016-08-15')
-    },
-];
-// ISSUE ROW FUNCTION (STATELESS COMPONENT)
-const IssueRow = (props) => (
-        <tr>
-            <td>{props.issue.id}</td>
-            <td>{props.issue.firstName}</td>
-            <td>{props.issue.lastName}</td>
-            <td>{props.issue.cellNum}</td>
-            <td>{props.issue.eMailAt}</td>
-            <td>{props.issue.quantityCopies}</td>
-            <td>{props.issue.created.toDateString()}</td>
-        </tr>
-        )
-// ISSUE TABLE FUNCTION (STATELESS COMPONENT)
-function IssueTable(props) {
-    const issueRows = props.issues.map(issue =><IssueRow key={issue.id} issue={issue} />);                                             
-            return (
-            <table className="bordered-table">
-            <thead>
-            <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Cell</th>
-            <th>Email</th>
-            <th>Quantity</th>
-            <th>Date</th>
-            </tr>
-            </thead>
-            <tbody>
-            {issueRows}
-            </tbody>
-            </table>
-            );
-    }
-// ADD AN ISSUE CLASS OBJECT
-class IssueAdd extends React.Component {
-    constructor() {
-        super();
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-        var form = document.forms.issueAdd;
-        this.props.createIssue({
-            firstName: form.firstName.value,
-            lastName: form.lastName.value,
-            cellNum: form.cellNum.value,
-            eMailAt: form.eMailAt.value,
-            quantityCopies: form.quantityCopies.value,
-            created: new Date(),
-        });
-        //clear the form for the next input
-        form.firstName.value = ""; form.lastName.value = ""; form.cellNum.value = ""; form.eMailAt.value = ""; form.quantityCopies.value = "";
-        //submit and load thank you if form validates
-        browserHistory.push('/c');
-    }
-    render() {
-        return (
-            <div>
-            <form name="issueAdd" onSubmit={this.handleSubmit}>
-            <input type="text" name="firstName" className="form-control" placeholder="First Name" />
-            <input type="text" name="lastName" className="form-control" placeholder="Last Name" /><br/>
-            <input type="text" name="cellNum" className="form-control" placeholder="Cell" />
-            <input type="text" name="eMailAt" className="form-control" placeholder="Email" /><br/>
-            <input type="text" name="quantityCopies" className="form-control" placeholder="Quantity" /><br/>
-            <button>Submit</button>
-            </form>
-            </div>
-        )
-    }
+//Parser needs
+const inputParsers = {
+  number(input) {
+    return parseFloat(input);
+  },
+};
+//Shaker component
+class ShakingError extends React.Component {
+	constructor() { super(); this.state = { key: 0 }; }
 
+	componentWillReceiveProps() {
+    // update key to remount the component to rerun the animation
+  	this.setState({ key: ++this.state.key });
+  }
+  
+  render() {
+  	return <div key={this.state.key} className="bounce">{this.props.text}</div>;
+  }
 }
-// BUILD AND MANIPULATE THE ISSUE LIST CLASS OBJECT
-class IssueList extends React.Component {
-    constructor() {
-        super();
-        this.state = { issues: [] };
+// My Form CLASS OBJECT
+class MyForm extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    if (!event.target.checkValidity()) {
+    	this.setState({
+        invalid: true,
+        displayErrors: true,
+      });
+      return;
+    }
+    const form = event.target;
+    const data = new FormData(form);
+
+    for (let name of data.keys()) {
+      const input = form.elements[name];
+      const parserName = input.dataset.parse;
+      console.log('parser name is', parserName);
+      if (parserName) {
+        const parsedValue = inputParsers[parserName](data.get(name))
+        data.set(name, parsedValue);
+      }
+    }
+    
+    this.setState({
+        res: stringifyFormData(data),
+        invalid: false,
+        displayErrors: false,
+    });
+    
+    //go to Thank You
+    browserHistory.push('/c');
+
+    // fetch('/api/form-submit-url', {
+    //   method: 'POST',
+    //   body: data,
+    // });
+  }
+
+  render() {
+  	const { res, invalid, displayErrors } = this.state;
+    return (
+    	<div>
+        <form
+          onSubmit={this.handleSubmit}
+          noValidate
+          className={displayErrors ? 'displayErrors' : ''}
+         >
+          <input id="username" name="username" type="text" placeholder="First Name" required/>
+          <input id="email" name="email" type="email" placeholder="Email" required />
+          <button>Submit</button>
+        </form>
         
-        this.createIssue = this.createIssue.bind(this);
-    }
-    
-    componentDidMount() {
-        this.loadData();
-    }
-    
-    loadData() {
-        setTimeout(() => {this.setState({issues: issues});}, 500);
-    }
-    
-    createIssue(newIssue) {
-        const newIssues = this.state.issues.slice();
-        newIssue.id = this.state.issues.length + 1;
-        newIssues.push(newIssue);
-        this.setState({ issues: newIssues });
-    }
-    
-    render() {
-        return (
-        <div>
-        <h1>Issue Tracker</h1>
-            <hr />
-            <IssueTable issues={this.state.issues}/>
-            <hr />
-            <IssueAdd createIssue={this.createIssue}/>
+        
+        
+        <div className="res-block">
+          {invalid && (
+            <ShakingError text="Oops, fix the red." />
+          )}
+          {!invalid && res && (
+          	<div>
+              <h3>Transformed data to be sent:</h3>
+              <pre>FormData {res}</pre>
+          	</div>
+          )}
         </div>
-        );
-    }
+    	</div>
+    );
+  }
 }
 //state two route
 class RouteB extends React.Component {
-
   btnClickC() {
     browserHistory.push('/c');
   }
@@ -169,7 +137,7 @@ class RouteB extends React.Component {
     return(
       <div>
         <h2>Route B</h2>
-        <IssueList />
+        <MyForm />
       </div>
     );
   }
@@ -206,7 +174,6 @@ class RouteC extends React.Component {
 
 
 
-
 //////////////////////////////////////////////////////////////////////////router render
 ReactDOM.render(
   <Router history={browserHistory}>
@@ -220,28 +187,14 @@ ReactDOM.render(
 );
 //////////////////////////////////////////////////////////////////////////end router render
 
-/* origi example https://codepen.io/lsmoura/pen/pNPOzp
 
-class RouteC extends React.Component {
-  btnClickA() {
-    browserHistory.push('/a');
-  }
 
-  btnClickB() {
-    browserHistory.push('/b');
+//from validator - stringify
+function stringifyFormData(fd) {
+  const data = {};
+	for (let key of fd.keys()) {
+  	data[key] = fd.get(key);
   }
-
-  render() {
-    return(
-      <div>
-        <h2>Route C</h2>
-        <div>
-          <button className="btn btn-default" onClick={ this.btnClickA }>Goto A</button>
-          <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
-        </div>
-      </div>
-    );
-  }
+  return JSON.stringify(data, null, 2);
 }
-
-*/
+/* origi router example https://codepen.io/lsmoura/pen/pNPOzp */
