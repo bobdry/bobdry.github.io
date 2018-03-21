@@ -86,14 +86,14 @@ class MyForm extends React.Component {
         invalid: false,
         displayErrors: false,
     });
-    
-    //go to Thank You
-    browserHistory.push('/c');
 
     // fetch('/api/form-submit-url', {
     //   method: 'POST',
     //   body: data,
     // });
+      
+    //go to Thank You
+    browserHistory.push('/c');
   }
 
   render() {
