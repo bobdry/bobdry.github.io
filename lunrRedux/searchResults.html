@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- head -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LUNR REDUX</title>
+	<!-- css -->        
+    <link rel="stylesheet" type="text/css" href="Includes/Bootstrap/css/bootstrap.min.css"> 
+    <link rel="stylesheet" type="text/css" href="Includes/Search.css?ver=1.0">
+</head>
+<body>
+<div class="container">
+			
+<div class="row">
+<div class="col-sm-12">      
+<h1><a href="searchResults.html">LUNR Search Basic</a></h1>
+    <p><strong>The 3 pages indexed for this example:</strong></p>
+    <ul>
+        <li><a href="Home/apples.html">Apples</a></li>
+        <li><a href="Home/corvettes.html">Corvettes</a></li>
+        <li><a href="Home/shoes.html">Shoes</a></li>
+    </ul>
+    <hr>
+</div>
+</div>
+    
+<div class="row">
+<div class="col-sm-12"> 
+<p>Please enter a search term.</p>
+<form id="searchForm" action="/searchResults.html" method="get" >
+<p><strong>Search</strong> <input name="search" id="searchLunr"> <button>GO</button></p>
+</form><br>
+<hr>
+<p><strong>Search Results:</strong></p>
+<div id="SearchResults">No search results found. Please enter new search terms.</div>
+</div> 
+</div>
+    
+</div>
+<!-- js -->
+<script type="text/javascript" src="Includes/jQuery/jquery-1.12.3.min.js"></script>
+<script type="text/javascript" src="Includes/Bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/lunr/lunr.js"></script>
+<script type="text/javascript" src="js/lunrFunc.js"></script>
+</body>
+</html>
