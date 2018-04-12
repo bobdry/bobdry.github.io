@@ -20,6 +20,7 @@ class RouteA extends React.Component {
     return(
       <div>
         <div>
+        <h1>Have something to say?</h1>
           <button className="btn btn-default" onClick={ this.btnClickB }>Goto B</button>
         </div>
       </div>
@@ -105,8 +106,9 @@ class MyForm extends React.Component {
           noValidate
           className={displayErrors ? 'displayErrors' : ''}
          >
-          <input id="username" name="username" type="text" placeholder="First Name" required/>
+          <input id="username" name="username" type="text" placeholder="Name" required/>
           <input id="email" name="email" type="email" placeholder="Email" required />
+          <input id="something" name="something" type="text" placeholder="Something..." required />
           <button>Submit</button>
         </form>
         
@@ -161,7 +163,7 @@ class RouteC extends React.Component {
     return(
       <div>
         <h2>Thank you</h2>
-        <p>Message</p>
+        <p>Your something has been received.</p>
         <div>
           <button className="btn btn-default" onClick={ this.btnClickA }>Go to home</button>
           <button className="btn btn-default" onClick={ this.btnClickB }>Go to form</button>
