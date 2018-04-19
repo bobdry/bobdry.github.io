@@ -1,16 +1,16 @@
 [
 {
-    "link": "/Home/apples.html",
+    "link": "Home/apples.html",
     "title": "Apples Bananas Pears",
     "description": "Apples Bananas Pears",
     "keywords": "Apples Bananas Pears"
 }, {
-    "link": "/Home/corvettes.html",
+    "link": "Home/corvettes.html",
     "title": "Corvettes Mustangs Camaros",
     "description": "Corvettes Mustangs Camaros",
     "keywords": "Corvettes Mustangs Camaros"
 }, {
-    "link": "/Home/shoes.html",
+    "link": "Home/shoes.html",
     "title": "Shoes Coats Hats",
     "description": "Shoes Coats Hats",
     "keywords": "Shoes Coats Hats"
