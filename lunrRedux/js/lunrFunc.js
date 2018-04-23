@@ -7,7 +7,6 @@ var DoSearch = function () {
     
 //get JSON
     $.getJSON("/lunrRedux/js/lunrIndex.json", function (data) {
-    
     //and loop though JSON to populate docs array   
     $.each( data, function(key) {
         docs.push( data[key] );
