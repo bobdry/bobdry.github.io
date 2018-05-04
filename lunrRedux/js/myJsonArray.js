@@ -3,7 +3,7 @@
 //this function goes and gets the Json data
 function getData(callback) {
    $.getJSON("/lunrRedux/js/lunrIndex.json")
-   //IF it can get the data it will give it to the getDataCallback funtion to use 
+   //IF it can get the data, it will give the data to the getDataCallback funtion to use 
     .done(function (data) {
         getDataCallback(data);
     })
@@ -18,12 +18,12 @@ function getData(callback) {
 function getDataCallback(data){
     var myJsonArray = [];
     $.each( data, function(key) {
+        //if () { //here we could add an if conditional for a multi dimensional array. we want to write only the json objects who match the html data attribute (https://www.w3schools.com/tags/att_global_data.asp) set in the destination div 
         myJsonArray.push( data[key] );
+        //}    
     });
-    console.log(myJsonArray);
+    //return myJsonArray;
 }
 
-//And here we first (1) make the getData function call to get the JSON and then (2) pass the callback function as the argument to do all the stuff we want to do with the returned JSON data
+//And here we (1) first make the getData function call to get the JSON and then (2) pass the callback function as the argument to do all the stuff we want to do with the returned JSON data
 getData(getDataCallback);
-
-//NEXT UP, remember how cool data attributes are https://www.w3schools.com/tags/att_global_data.asp
