@@ -2,7 +2,11 @@ body {
     padding: 4.8em;
 }
 
-div {padding: 0.6em;}
+a, a:hover {
+    color: #ea7123;
+}
+
+div {padding: 0.6em;color: #FFF7C3;}
 div:first-child {padding: 0; margin: 0 0 1.2em;}
 
 .knockout {
@@ -11,7 +15,7 @@ div:first-child {padding: 0; margin: 0 0 1.2em;}
     width: 10em;
     border-radius: 5em;
     /* Add a colorful texture and cutom font-styling */
-    background-image: linear-gradient(to bottom, #fff , #f2f2f2);
+    background-image: linear-gradient(to bottom, #fff , #C5FFEB);
 }
 
 svg.knockout-text-container {
