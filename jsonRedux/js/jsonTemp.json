@@ -1,0 +1,115 @@
+[
+{
+"itemOneA": "Title for Item One A",
+"itemOneAdetails": "Details for Item One A",
+"itemOneAchildren": [
+    {
+        "itemTwoA": "Title for Item Two A",
+        "itemTwoAdetails": "Details for Item Two A",
+        "itemTwoAchildren": [
+            {
+                "itemThreeA": "Title for Item Three A",
+                "itemThreeAdetails": "Details for Item Two A",
+                "itemThreeAchildren": null
+            },
+            {
+                "itemThreeB": "Title for Item Three B",
+                "itemThreeBdetails": "Details for Item Two B",
+                "itemThreeBchildren": null
+            }
+        ]
+    },
+    {
+        "itemTwoB": "Title for Item Two B",
+        "itemTwoBdetails": "Details for Item Two B",
+        "itemTwoBchildren": [
+            {
+                "itemThreeA": "Title for Item Three A",
+                "itemThreeAdetails": "Details for Item Two A",
+                "itemThreeAchildren": null
+            },
+            {
+                "itemThreeB": "Title for Item Three B",
+                "itemThreeBdetails": "Details for Item Two B",
+                "itemThreeBchildren": null
+            }
+        ]
+    }
+]
+},
+{
+"itemOneB": "Loans",
+"itemOneBdetails": null,
+"itemOneBchildren": [
+    {
+        "itemTwoA": "New Vehicle - Fixed Rate - Up to 36 Months",
+        "itemTwoAdetails": null,
+        "itemTwoAchildren": [
+            {
+                "itemThreeA": "New Vehicle - Fixed Rate<sup>8</sup>",
+                "itemThreeAdetails": null,
+                "itemThreeAchildren": null
+            },
+            {
+                "itemThreeB": "Up to 36 Months",
+                "itemThreeBdetails": null,
+                "itemThreeBchildren": null
+            },
+            {
+"itemThreeB": "https://www.ncsecu.org/AutoLoans/VehicleLoans.html",
+                "itemThreeBdetails": null,
+                "itemThreeBchildren": null
+            },
+            {
+                "itemThreeB": "2.75",
+                "itemThreeBdetails": null,
+                "itemThreeBchildren": null
+            },
+            {
+                "itemThreeB": "3.25",
+                "itemThreeBdetails": null,
+                "itemThreeBchildren": null
+            }
+        ]
+    }
+]
+},
+{
+"itemOneC": "Title for Item One A",
+"itemOneCdetails": "Details for Item One A",
+"itemOneCchildren": [
+    {
+        "itemTwoA": "Title for Item Two A",
+        "itemTwoAdetails": "Details for Item Two A",
+        "itemTwoAchildren": [
+            {
+                "itemThreeA": "Title for Item Three A",
+                "itemThreeAdetails": "Details for Item Two A",
+                "itemThreeAchildren": null
+            },
+            {
+                "itemThreeB": "Title for Item Three B",
+                "itemThreeBdetails": "Details for Item Two B",
+                "itemThreeBchildren": null
+            }
+        ]
+    },
+    {
+        "itemTwoB": "Title for Item Two B",
+        "itemTwoBdetails": "Details for Item Two B",
+        "itemTwoBchildren": [
+            {
+                "itemThreeA": "Title for Item Three A",
+                "itemThreeAdetails": "Details for Item Two A",
+                "itemThreeAchildren": null
+            },
+            {
+                "itemThreeB": "Title for Item Three B",
+                "itemThreeBdetails": "Details for Item Two B",
+                "itemThreeBchildren": null
+            }
+        ]
+    }
+]
+}
+]
