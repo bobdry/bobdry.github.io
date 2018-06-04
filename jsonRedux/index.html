@@ -1,36 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- head -->
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<!-- meta -->
-    <title>Yext Redux</title>
-	<meta name="description" content="Apples Bananas Pears"/>
-	<meta name="keywords" content="Apples Bananas Pears" /> 
-	<!-- css -->        
+    <meta charset="UTF-8" />
+    <title>React Basics V16</title>    
+    <!-- css -->        
     <link rel="stylesheet" type="text/css" href="css/Bootstrap/css/bootstrap.min.css"> 
-    <link rel="stylesheet" type="text/css" href="css/yext.css"> 
+    <style>
+    div.listSidebar{float:right;}
+    legend{border-bottom:0;margin:0;}
+    </style>
+    <!-- react js -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 </head>
-<!-- body -->
-<body>
-		<div class="container">
-		<div class="row">
+<body>   
+    <div class="container"><div class="row"><div class="col-sm-12">
+        
+        <h1>React JSON parse using CORS</h1>
+        <hr>
+        <!-- destination -->
+        <div class="row">
         <div class="col-sm-12">
-        <h1>Yext Redux</h1>
-        <!-- content -->
-            <!-- all mydev acct locations json -->
-            <p><a href="https://api.yext.com/v2/accounts/me/locations?api_key=988e81fbb65600bbaf61b371a60e1117&v=20180412">all mydev acct locations json</a></p>
-            <!-- mydev acct VA location json -->
-            <p><a href="https://api.yext.com/v2/accounts/me/locations/9193480531244852525?api_key=988e81fbb65600bbaf61b371a60e1117&v=20180412">mydev acct VA location json</a></p>
-            
-            <p id="demo"></p>
-
+        <div id="destinationOne"></div>  
         </div></div></div>
-<!-- js -->
-<script type="text/javascript" src="js/jQuery/jquery-1.12.3.min.js"></script>
-<script type="text/javascript" src="js/Bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="js/yext.js"></script>
+      
+    <script type="text/javascript" src="js/jQuery/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/json.jsx" type="text/babel"></script>
 </body>
 </html>
