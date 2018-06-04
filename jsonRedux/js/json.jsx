@@ -54,8 +54,20 @@ function pushRenderData(data){
 function reactJsonCorsProps() {
     //react function for constants with loops
     
-    var itemOneLength = posts.itemTwo.length;
+    var itemOneLength = posts.length;
     console.log(itemOneLength)
+    
+    //Array holders        
+    const itemTwoArr = [];  
+    
+    for (var i=0; i<itemOneLength; i++) {
+        var itemTwoLength = posts[i].itemOnechildren.length
+        for (var j=0; j<itemOneLength; j++) {
+            itemTwoArr.push(posts[i].itemOnechildren[j].itemTwo)
+        }
+    }
+
+    console.log(itemTwoArr);
     
     function JsonRender(props) {  
         const JsonRenderLoop = (
