@@ -23,7 +23,7 @@ function createCORSRequest(method, url) {
 function makeCorsRequest() {
   // This is a sample server that supports CORS.
   //var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
-  var url = 'http://127.0.0.1:51883//jsonRedux/js/jsonTemp.json'
+  var url = 'http://127.0.0.1:50423/jsonRedux/js/jsonTemp.json'
   var xhr = createCORSRequest('GET', url);
   if (!xhr) {
     alert('CORS not supported');
@@ -54,19 +54,25 @@ function pushRenderData(data){
 function reactJsonCorsProps() {
     //react function for constants with loops
     function JsonRender(props) {  
-  
+    
+    function toggleLiClass(e) {
+    e.preventDefault();
+    //this.classSet.add('expand');
+    console.log('The link was clicked.');
+    }
+        
         const JsonRenderLoop = (
         <div>
         <h4>Menu</h4>
         <ul>
             {props.posts.map((post, i) =>
-            <li key={post.itemOne}>
+            <li key={post.itemOne} className="linkSubdue" onClick={toggleLiClass}>
             {post.itemOne}
             {
             post.itemOnechildren.map((subpost, j) => {
                 return (
                 <ul key={subpost.itemTwo}>
-                <li>
+                <li className="linkSubdue" onClick={toggleLiClass}>
                 {subpost.itemTwo}
                 {
                     subpost.itemTwochildren.map((subpostsub, k) => {
