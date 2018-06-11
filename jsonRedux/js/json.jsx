@@ -23,7 +23,7 @@ function createCORSRequest(method, url) {
 function makeCorsRequest() {
   // This is a sample server that supports CORS.
   //var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
-  var url = 'http://127.0.0.1:50423/jsonRedux/js/jsonTemp.json'
+  var url = 'http://127.0.0.1:62107/jsonRedux/js/jsonTemp.json'
   var xhr = createCORSRequest('GET', url);
   if (!xhr) {
     alert('CORS not supported');
@@ -53,26 +53,34 @@ function pushRenderData(data){
 //react component for JSON makeCorsRequest using PROPS
 function reactJsonCorsProps() {
     //react function for constants with loops
-    function JsonRender(props) {  
-    
-    function toggleLiClass(e) {
-    e.preventDefault();
-    //this.classSet.add('expand');
-    console.log('The link was clicked.');
+    function JsonRender(props) { 
+
+    let className = 'menu';
+        
+    function handleClick(e) {
+        e.preventDefault();
+        if (className == 'menu') {
+        className = 'menu-active'
+        }
+        else {
+            className = 'menu'
+        }
+        console.log(className);    
     }
         
-        const JsonRenderLoop = (
+    const JsonRenderLoop = (
+
         <div>
         <h4>Menu</h4>
         <ul>
             {props.posts.map((post, i) =>
-            <li key={post.itemOne} className="linkSubdue" onClick={toggleLiClass}>
+            <li key={post.itemOne} id={post.itemOne} className={className} onClick={handleClick}>
             {post.itemOne}
             {
             post.itemOnechildren.map((subpost, j) => {
                 return (
                 <ul key={subpost.itemTwo}>
-                <li className="linkSubdue" onClick={toggleLiClass}>
+                <li className="linkSubdue">
                 {subpost.itemTwo}
                 {
                     subpost.itemTwochildren.map((subpostsub, k) => {
