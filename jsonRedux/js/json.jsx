@@ -1,5 +1,6 @@
 ////////////// React JSON parse using CORS Cross Origin Resource Sharing
 const destinationNodeOne = document.getElementById('destinationOne');
+const destinationNodeTwo = document.getElementById('destinationTwo');
 const posts = [];
 
 // Create the XHR object.
@@ -23,7 +24,7 @@ function createCORSRequest(method, url) {
 function makeCorsRequest() {
   // This is a sample server that supports CORS.
   //var url = 'http://html5rocks-cors.s3-website-us-east-1.amazonaws.com/index.html';
-  var url = 'http://127.0.0.1:62107/jsonRedux/js/jsonTemp.json'
+  var url = 'http://127.0.0.1:50807/jsonRedux/js/jsonTemp.json'
   var xhr = createCORSRequest('GET', url);
   if (!xhr) {
     alert('CORS not supported');
@@ -117,6 +118,38 @@ function reactJsonCorsProps() {
     destinationOne
     );  
 }
+
+
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+  //events are passed as a func like this in the render
+  render() {
+    return (
+    <div>
+            <h3>ON OFF toggle for Handling <em>Events</em></h3>
+      <button className={this.state.isToggleOn ? 'ON BABY' : 'OFF BABY'} onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON BABY' : 'OFF BABY'}
+      </button>
+    </div>
+    );
+  }
+}
+    ReactDOM.render(
+    <Toggle />,
+    destinationTwo
+    );  
 
 //call funcs to build component
 makeCorsRequest(pushRenderData);

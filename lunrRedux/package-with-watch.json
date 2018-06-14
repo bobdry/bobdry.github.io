@@ -1,0 +1,26 @@
+{
+  "name": "foundation-revamp",
+  "version": "1.0.0",
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "json-minify": "^1.0.0",
+    "npm-run-all": "^4.1.3",
+    "uglify-js": "^3.4.0",
+    "uglifycss": "0.0.29",
+    "watch": "^1.0.2"
+  },
+  "scripts": {
+    "build:css": "uglifycss Includes/css/Search.css > Includes/Search.css",
+    "watch:css": "watch 'npm run build:css' Includes/",
+    "build:json": "json-minify Includes/js/lunrIndex.json > Includes/lunrIndex.json",
+    "watch:json": "watch 'npm run build:json' Includes/",
+    "build:js": "uglifyjs Includes/js/lunrFunc.js > Includes/lunrFunc.js",
+    "watch:js": "watch 'npm run build:js' Includes/",
+    "build": "npm run build:js && npm run build:css && npm run build:json",
+    "build:watch": "npm-run-all --parallel watch:js watch:css watch:json"
+  },
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
