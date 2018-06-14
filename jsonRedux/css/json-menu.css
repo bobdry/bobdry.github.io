@@ -1,58 +1,53 @@
 /*json-menu.css*/
-ul {
+div.jsonMenuStyle {
+    margin: 0 0 3.2em 0;
+}
+div.jsonMenuStyle ul {
     padding: 0;
     margin: 0;
     font-weight: bold;
 }
-
-ul li {
+div.jsonMenuStyle ul li {
     color: #333;
-    cursor: default;
     list-style: none;
     padding: 0.6em;
-    margin: 0.4em 0 0.1em 0;
+    margin: 0.3em 0 0.1em 0;
     background: #f1f1f1;  
     border: 1px #bbb solid;
-    height: 100%;
-    transition: .2s;
-    overflow: hidden;
 }
-
-ul li.linkSubdue {
-    color: #426AFF;
+div.jsonMenuStyle ul div > li {
+    color: #378AE8;
     cursor: pointer;
 }
-
-ul li.linkSubdue:hover {
-    color: #57C8FF;
+div.jsonMenuStyle ul div > li:hover {
+    color: #4ACEFF;
+    background: #f7f7f7; 
 }
-
-ul li.expand {
-    height: 100%;
-}
-ul li ul li {
-    background: #f5f5f5;  
-    border: 1px #bcbcbc solid; 
-}
-ul li ul li ul li{
-    background: #f9f9f9;  
-    border: 1px #ccc solid; 
-}
-
-ul li p {
+div.jsonMenuStyle ul li p {
     color: #333;
     margin: 0;
     font-weight: normal;
 }
-
-li.linkSubdue:before {
+/* +/- and hide and show ul's on click */
+div.jsonMenuStyle ul div > li:before {
     position: relative;
     top: 0;
     margin: 0 0.2em;
     content: "\002b";
     font-size: 1.4em;
 }
-
-ul li ul li ul li a:after {
-    content: "";
+div.jsonMenuStyle ul div > li.expand:before {
+    content: "\2212";
+}
+div.jsonMenuStyle ul div > li + ul {
+    height: 0;
+    transition: .2s;
+    overflow: hidden;
+}
+div.jsonMenuStyle ul div > li.expand + ul {
+    height: auto;
+}
+/* indent sub ul's */
+div.jsonMenuStyle ul div > ul {
+    margin-left: 1.2em;
 }
