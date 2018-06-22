@@ -87,11 +87,12 @@ class MyForm extends React.Component {
         invalid: false,
         displayErrors: false,
     });
-
-    // fetch('/api/form-submit-url', {
+    //fetch('http://foo.com', {
     //   method: 'POST',
     //   body: data,
-    // });
+    //});
+    //send it to a DynamoDB
+    //https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.NodeJs.html
       
     //go to Thank You
     browserHistory.push('/c');
