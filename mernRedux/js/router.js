@@ -75,7 +75,6 @@ class MyForm extends React.Component {
     for (let name of data.keys()) {
       const input = form.elements[name];
       const parserName = input.dataset.parse;
-      console.log('parser name is', parserName);
       if (parserName) {
         const parsedValue = inputParsers[parserName](data.get(name))
         data.set(name, parsedValue);
@@ -87,12 +86,26 @@ class MyForm extends React.Component {
         invalid: false,
         displayErrors: false,
     });
-    //fetch('http://foo.com', {
-    //   method: 'POST',
-    //   body: data,
-    //});
+    fetch('https://api.formbucket.com/f/buk_F1leehEmHvuGbKf9wZWtpWQI', {
+        method: 'post',
+        mode: 'cors',
+        headers: {
+            'accept' : 'application/javascript',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        username: username.value,
+        email: email.value,
+        something: something.value
+        })
+    });
+      
     //send it to a DynamoDB
     //https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.NodeJs.html
+    //send it to a MongoDB
+    //???
+    //send it to formbucket
+    //see above, it's in place
       
     //go to Thank You
     browserHistory.push('/c');
