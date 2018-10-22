@@ -27,6 +27,7 @@ function makeCorsRequest() {
     alert('CORS not supported');
     return;
   }
+    
   // Response handlers.
   xhr.onload = function(data) {
       pushRenderData(JSON.parse(xhr.responseText));
