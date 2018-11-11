@@ -30,22 +30,25 @@ body.github {
 }
 
 body.github h1 {
-    color: #333;
+    color: #777;
     font-size: 4.75em;
     font-weight: bold;
     margin-top: 1em;
 }
+@media all and (min-width:475px){body.github h1{color: #333;}}
 
 body.github h1 span {
-    color: #777;
+    color: #555;
 }
+@media all and (min-width:475px){body.github h1 span{color: #777;}}
 
 body.github a {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: bold;
     color: #67cbbb; 
     padding-left: 0.2em
 }
+@media all and (min-width:475px){body.github a{font-size: 1.5em;}}
 
 body.github a:hover {
     text-decoration: none;
@@ -55,5 +58,6 @@ body.github a:hover {
 body.github div img {
     width: 64px;
     position: absolute;
-    left: 26.0em;
+    left: 16.0em;
 }
+@media all and (min-width:475px){body.github div img{left: 26.0em;}}
