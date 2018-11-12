@@ -1,6 +1,7 @@
 body {
-    padding: 4.8em;
+    padding: 1.2em;
 }
+@media all and (min-width:475px){body{padding: 4.8em;}}
 
 a, a:hover {
     color: #ea7123;
@@ -10,11 +11,9 @@ div {padding: 0.6em;color: #FFF7C3;}
 div:first-child {padding: 0; margin: 0 0 1.2em;}
 
 .knockout {
-    /* Ensure the bottom layer is full screen */
     height: 10em;
     width: 10em;
     border-radius: 5em;
-    /* Add a colorful texture and cutom font-styling */
     background-image: linear-gradient(to bottom, #fff , #C5FFEB);
 }
 
@@ -42,12 +41,16 @@ body.github h1 span {
 }
 @media all and (min-width:475px){body.github h1 span{color: #777;}}
 
-body.github a {
+body.github p {
+    padding-left: 0.3em
+}
+
+body.github p a {
     font-size: 1.3em;
     font-weight: bold;
     color: #67cbbb; 
-    padding-left: 0.2em
 }
+
 @media all and (min-width:475px){body.github a{font-size: 1.5em;}}
 
 body.github a:hover {
