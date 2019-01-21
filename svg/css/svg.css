@@ -29,15 +29,15 @@ body.github {
 }
 
 body.github h1 {
-    color: #777;
+    color: #888;
     font-size: 4.75em;
     font-weight: bold;
     margin-top: 1em;
 }
-@media all and (min-width:475px){body.github h1{color: #333;}}
+@media all and (min-width:475px){body.github h1{color: #555;}}
 
 body.github h1 span {
-    color: #555;
+    color: #555;ß
 }
 @media all and (min-width:475px){body.github h1 span{color: #777;}}
 
