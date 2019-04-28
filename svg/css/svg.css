@@ -24,22 +24,23 @@ svg.knockout-text-container {
 }
 
 body.github {
-    background: #000;
+    background: #001429;
     padding: 2.8em 4.0em;
 }
 
 body.github h1 {
-    color: #888;
-    font-size: 4.75em;
+    color: #0058b5;
+    font-size: 3.75em;
     font-weight: bold;
-    margin-top: 1em;
+    margin: 4.0rem 0 2.75rem 0;
+    line-height: 4.75rem;
 }
-@media all and (min-width:475px){body.github h1{color: #555;}}
 
 body.github h1 span {
-    color: #555;ß
+    color: #fff;
+    display: block;
 }
-@media all and (min-width:475px){body.github h1 span{color: #777;}}
+@media all and (min-width:600px){body.github h1 span{display: inline;}}
 
 body.github p {
     padding-left: 0.3em
@@ -48,19 +49,19 @@ body.github p {
 body.github p a {
     font-size: 1.3em;
     font-weight: bold;
-    color: #67cbbb; 
+    color: #20ebf8; 
 }
 
 @media all and (min-width:475px){body.github a{font-size: 1.5em;}}
 
 body.github a:hover {
     text-decoration: none;
-    color: #999; 
+    color: #0058b5; 
 }
 
 body.github div img {
-    width: 64px;
+    width: 100px;
     position: absolute;
     left: 16.0em;
 }
-@media all and (min-width:475px){body.github div img{left: 26.0em;}}
+@media all and (min-width:600px){body.github div img{width: 200px;left: 26.0em;}}
