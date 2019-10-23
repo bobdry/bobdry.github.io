@@ -47,7 +47,7 @@ body.github p {
 }
 
 body.github p a {
-    font-size: 1.3em;
+    font-size: 2.0rem;
     font-weight: bold;
     color: #20ebf8; 
 }
@@ -56,7 +56,7 @@ body.github p a {
 
 body.github a:hover {
     text-decoration: none;
-    color: #0058b5; 
+    color: #EBB9E7; 
 }
 
 body.github div img {
